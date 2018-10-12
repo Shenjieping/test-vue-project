@@ -1,0 +1,213 @@
+body {
+    // font-family: "Microsoft YaHei", "Arial", "Hiragino Sans GB", "Helvetica", "sans-serif" !important;
+    line-height: 1;
+    background: #f5f1ef !important;
+    padding: 0;
+    margin: 0;
+   // (待验证)webkit浏览器渲染出来的字体具有一定的平滑效果，所以chrome渲染出来的字体要大一点并且宽一点
+   // 关闭
+   // -webkit-font-smoothing: antialiased;
+   // -moz-osx-font-smoothing: antialiased;
+   // 启用
+   // -webkit-font-smoothing: subpixel-antialiased;
+   // -moz-osx-font-smoothing: auto;
+}
+html,
+body {
+    height: 100%;
+    width: 100%;
+}
+
+ul, figure, h1, h2, h3, h4, h5, h6 {
+    margin: 0;
+    padding: 0;
+}
+a {
+    text-decoration: none;
+}
+
+ul {
+  list-style: none;
+}
+
+::selection {
+    background: #b1a8ab !important;
+}
+
+// antd字体文件本地化, 默认的网络路径对内网域名有限制;
+// @font-face {
+//     font-family: 'anticon';
+//     src: url('../antd-fonts/iconfont.eot');/* IE9*/
+//     src:
+//         /* IE6-IE8 */
+//         url('https://at.alicdn.com/t/font_r5u29ls31bgldi.eot?#iefix') format('embedded-opentype'),
+//         /* chrome、firefox */
+//         url('../antd-fonts/iconfont.woff') format('woff'),
+//         /* chrome、firefox、opera、Safari, Android, iOS 4.2+*/
+//         url('../antd-fonts/iconfont.ttf') format('truetype'),
+//         /* iOS 4.1- */
+//         url('../antd-fonts/iconfont.svg#iconfont') format('svg');
+// }
+
+textarea {
+    resize: none; // 禁用拉伸
+    outline: none;
+    padding: 12px !important;
+    border-radius: 6px;
+    background: #fbfcfc;
+    border: 1px solid #e9e7e7;
+    word-break: break-all;
+    &:focus {
+        background: #fff;
+        border: 1px solid #dad7d7;
+    }
+    // 设置webkit滚动条: http://www.xuanfengge.com/css3-webkit-scrollbar.html
+    &::-webkit-scrollbar {
+        width: 6px;
+    }
+    &::-webkit-scrollbar-track {
+        box-shadow: inset 0 0 6px rgba(0, 0, 0, .3);
+        border-radius: 6px;
+    }
+    &::-webkit-scrollbar-thumb {
+        border-radius: 6px;
+        background-color: #c1c1c1;
+        // box-shadow: inset 0 0 6px rgba(0,0,0,.3);
+    }
+}
+
+// 卡片hover统一效果
+.card-common,
+.nocard-common,
+.noshdow-common {
+    z-index: 1;
+    position: relative;
+    top: 0;
+    transition: box-shadow, margin-top, .5s;
+    // 图片蒙层
+    figure {
+        position: relative;
+        &:after {
+            position: absolute;
+            content: '';
+            top: 0;
+            right: 0;
+            bottom: 0;
+            left: 0;
+            background: rgba(0, 0, 0, .02);
+            border-radius: 6px 6px 0 0;
+        }
+    }
+    &:hover {
+        cursor: pointer;
+        top: -3px;
+        box-shadow: 0 4px 15px 5px rgba(0, 0, 0, .1);
+        // box-shadow: 0 0 20px rgba(0, 0, 0, .1);
+        figure {
+            &:after {
+                opacity: 0;
+            }
+        }
+    }
+}
+.homeCard-common {
+    z-index: 1;
+    position: relative;
+    top: 0;
+    transition: box-shadow, margin-top, .5s;
+    // 图片蒙层
+    figure {
+        position: relative;
+        &:after {
+            position: absolute;
+            content: '';
+            top: 0;
+            right: 0;
+            bottom: 0;
+            left: 0;
+            background: rgba(245, 241, 239, .3);
+        }
+    }
+    &:hover {
+        cursor: pointer;
+        top: -3px;
+        box-shadow: 0 4px 15px 5px rgba(0, 0, 0, .1);
+        // box-shadow: 0 0 20px rgba(0, 0, 0, .1);
+        figure {
+            &:after {
+                opacity: 0;
+            }
+        }
+    }
+}
+
+.nocard-common:hover {
+    top: 0;
+}
+.noshdow-common:hover {
+    box-shadow: none;
+}
+.clear {
+    zoom: 1;
+    &:after {
+        content: '';
+        height: 0;
+        width: 0;
+        display: block;
+        visibility: visible;
+        clear: both;
+        overflow: hidden;
+    }
+}
+
+// 消息数目徽章等
+.badge {
+    box-sizing: border-box;
+    display: inline-block;
+    min-width: 18px;
+    height: 18px;
+    line-height: 18px;
+    padding: 0 2px;
+    border-radius: 18px;
+    text-align: center;
+    font-size: 12px;
+    // font-weight: 700;
+    color: #fff;
+    background-color: red;
+
+    &:empty {
+        display: none;
+    }
+}
+
+// 多行省略
+.multi-line-ellipsis {
+    position: relative;
+    overflow: hidden;
+    &:after {
+        color: #e8e8e8;
+        content: '...';
+        position: absolute;
+        bottom: 0;
+        right: 0;
+        padding: 0 2px 0 40px;
+        // background: url(http://css88.b0.upaiyun.com/css88/2014/09/ellipsis_bg.png) repeat-y;
+        // Safari 上用transparent有问题, 用rgba代替
+        background: linear-gradient(to right, rgba(255, 255, 255, 0), #ffffff 40px); // 标准的语法
+    }
+}
+
+.animate-route{
+    animation-duration: 1.2s;
+    animation-fill-mode: both;
+    animation-name: fadeRoute;
+}
+
+@keyframes fadeRoute {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
